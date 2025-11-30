@@ -34,10 +34,7 @@ public class Employee {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @NotBlank(message = "Le mot de passe est requis")
-    @Size(min = 6, message = "Le mot de passe doit contenir au moins 6 caractères")
-    @Column(nullable = false)
-    private String password;
+
 
     @NotNull(message = "Le salaire est requis")
     @PositiveOrZero(message = "Le salaire doit être positif ou nul")

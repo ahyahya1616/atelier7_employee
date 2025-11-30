@@ -1,0 +1,71 @@
+### ============================
+### 1. LOGIN (Admin)
+### ============================
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "1234"
+}
+
+###
+# Après cette requête, copie le token reçu et remplace-le dans la variable ci-dessous :
+###
+
+@token = Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc2NDU0MzM5MCwiZXhwIjoxNzY0NjI5NzkwfQ.lVazS1aLlJm0mYtr9TFC2Px1UT3d9SEI5MuGcjNrdf8
+
+
+### ============================
+### 2. GET ALL EMPLOYEES
+### ============================
+GET http://localhost:8080/api/employees
+Authorization: {{token}}
+
+###
+
+### ============================
+### 3. GET EMPLOYEE BY ID
+### ============================
+GET http://localhost:8080/api/employees/1
+Authorization: {{token}}
+
+###
+
+### ============================
+### 4. CREATE EMPLOYEE
+### ============================
+POST http://localhost:8080/api/employees
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "firstName": "Yahya",
+  "lastName": "Benali",
+  "email": "yahya@example.com",
+  "salary": 4500
+}
+
+###
+
+### ============================
+### 5. UPDATE EMPLOYEE
+### ============================
+PUT http://localhost:8080/api/employees/1
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "firstName": "Yahya Updated",
+  "lastName": "Benali Updated",
+  "email": "yahya@example.com",
+  "salary": 5500
+}
+
+###
+
+### ============================
+### 6. DELETE EMPLOYEE
+### ============================
+DELETE http://localhost:8080/api/employees/1
+Authorization: {{token}}

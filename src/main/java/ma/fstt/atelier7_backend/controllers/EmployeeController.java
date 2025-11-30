@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/employees")
-@CrossOrigin(origins = "${app.frontend.origin:http://localhost:4200}")
 @Validated
 public class EmployeeController {
 

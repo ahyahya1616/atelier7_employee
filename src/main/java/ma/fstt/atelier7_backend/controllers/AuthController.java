@@ -2,8 +2,7 @@ package ma.fstt.atelier7_backend.controllers;
 
 import ma.fstt.atelier7_backend.security.JwtUtil;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +22,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Map<String, String> request) {
-
         String email = request.get("email");
         String password = request.get("password");
 
@@ -31,7 +29,7 @@ public class AuthController {
                 new UsernamePasswordAuthenticationToken(email, password)
         );
 
-        String token = jwtUtil.generateToken(email);
+        String token = jwtUtil.generateToken(auth.getName());
 
         return ResponseEntity.ok(Map.of("token", token));
     }

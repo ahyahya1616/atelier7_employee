@@ -40,7 +40,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new IllegalArgumentException("Email already used");
         }
 
-        employee.setPassword(encoder.encode(employee.getPassword()));
 
         return repository.save(employee);
     }
@@ -53,10 +52,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         existing.setLastName(employee.getLastName());
         existing.setEmail(employee.getEmail());
         existing.setSalary(employee.getSalary());
-        if (employee.getPassword() != null) {
-            existing.setPassword(encoder.encode(employee.getPassword()));
-        }
-
         return repository.save(existing);
     }
 
